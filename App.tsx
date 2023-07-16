@@ -1,107 +1,51 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- *
- * @format
- */
+// In App.js in a new project
 
-import React, { useEffect, useState } from 'react';
-import type {PropsWithChildren} from 'react';
-import {
-  Image,
-  SafeAreaView,
-  ScrollView,
-  StatusBar,
-  StyleSheet,
-  Text,
-  useColorScheme,
-  View,
-} from 'react-native';
+import * as React from 'react';
+import { NavigationContainer } from '@react-navigation/native';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
-import {
-  Colors,
-  DebugInstructions,
-  Header,
-  LearnMoreLinks,
-  ReloadInstructions,
-} from 'react-native/Libraries/NewAppScreen';
 
-type SectionProps = PropsWithChildren<{
-  title: string;
-}>;
+import { ActivityIndicator, Dimensions, Image, Text, View } from 'react-native';
 
-import firestore from '@react-native-firebase/firestore';
- export interface user{
-          text:string,
-          key:string
-        }
-function App(): JSX.Element {
-  const isDarkMode = useColorScheme() === 'dark';
+// import Ionicons from 'react-native-vector-icons/Ionicons';
+// import Icon from 'react-native-vector-icons/FontAwesome';
+import HomeScreen from './screens/HomeScreen';
+import FullScreen from './screens/FullScreen'
+const {width, height} =Dimensions.get('window')
 
-  const backgroundStyle = {
-    backgroundColor: isDarkMode ? Colors.darker : Colors.lighter,
-  };
-  const [loading, setLoading] = useState(true); // Set loading to true on component mount
-  const [users, setUsers] = useState([]); // Initial empty array of users
+const Stack = createNativeStackNavigator();
 
-  useEffect(() => {
-    const subscriber = firestore()
-      .collection('krishna wallpaper')
-      .onSnapshot(querySnapshot => {
-        // see next step
-        const users:any = [];
 
-        querySnapshot.forEach(documentSnapshot => {
-          users.push({
-            ...documentSnapshot.data(),
-            key: documentSnapshot.id,
-          });
-        });
-       
-        setUsers(users);
-        setLoading(false);
-      });
-    // Unsubscribe from events when no longer in use
-    return () => subscriber();
-  }, []);
-  console.log(users);
-  const da=users[0];
+const App=()=> {
+  // const [isLoading, setIsLoading] = React.useState(true);
+
+  // React.useEffect(() => {
+  //   setTimeout(() => {
+  //     setIsLoading(false);
+  //   }, 1000)
+
+  // }, []);
+  // if (isLoading) {
+  //   return (
+  //     <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center', backgroundColor: "#fff" }}>
+  //       <View style={{ justifyContent: 'center', width: width, height: height/3, borderRadius: 10,alignItems: 'center', }}>
+  //         <Image style={{ width:width/2 , height: height/3, borderRadius: 15}} source={require("./play_store_512.png")} />
+  //         {/* <Image style={{ width: 100, height: 100, borderRadius: 15, marginBottom: 20 }} source={{uri:"https://i.pinimg.com/564x/3e/a4/21/3ea4213b4002dbb429c4bfde662d4d4e.jpg"}} /> */}
+  //       </View>
+  //       <ActivityIndicator size="large" color="blue" />
+  //     </View>
+  //   )
+  // }
   return (
-    <View style={[backgroundStyle,{flex:1,height:100}]} >
-      <StatusBar
-        barStyle={isDarkMode ? 'light-content' : 'dark-content'}
-        backgroundColor={backgroundStyle.backgroundColor}
-      />
-     
-        
-        <View style={{flex:1}}>
-            <Text>hello {da} </Text>
-       <Image  style={{width: '100%', height: '100%', borderRadius: 10}} source={{uri:da}}></Image>
-       <Text>hello {da} </Text>
-        </View>
-     
-     
-    </View>
+    <NavigationContainer>
+      <Stack.Navigator  screenOptions={{
+    headerShown: false
+  }}   initialRouteName="Tab">
+        <Stack.Screen name="Tab" component={HomeScreen} />
+        <Stack.Screen name="Full" component={FullScreen}  options={({route})=>{return( { title : route.params.item, }) }}/>
+      </Stack.Navigator>
+    </NavigationContainer>
   );
 }
-
-const styles = StyleSheet.create({
-  sectionContainer: {
-    marginTop: 32,
-    paddingHorizontal: 24,
-  },
-  sectionTitle: {
-    fontSize: 24,
-    fontWeight: '600',
-  },
-  sectionDescription: {
-    marginTop: 8,
-    fontSize: 18,
-    fontWeight: '400',
-  },
-  highlight: {
-    fontWeight: '700',
-  },
-});
 
 export default App;
