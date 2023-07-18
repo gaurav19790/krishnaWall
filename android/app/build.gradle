@@ -73,9 +73,9 @@ android {
 
     compileSdkVersion rootProject.ext.compileSdkVersion
 
-    namespace "com.krishnawall"
+    namespace "com.gaurav19790.krishnawall"
     defaultConfig {
-        applicationId "com.krishnawall"
+        applicationId "com.gaurav19790.krishnawall"
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
         versionCode 1

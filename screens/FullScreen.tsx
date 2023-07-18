@@ -76,39 +76,20 @@ const [modalVisible, setModalVisible] = useState(false);
     <View style={{height: height,width: width,}}>
     
     <StatusBar barStyle={isDarkMode ? 'light-content' : 'dark-content'} />
-     <TouchableOpacity
-        style={{
-          position: "absolute",
-          top: 20,
-          left: 10,
-          paddingHorizontal: 5,
-          paddingVertical: 5,
-          backgroundColor: "#fff",
-        //   backgroundColor: color,
-          borderRadius: 50,
-        zIndex:1,
-        }}
-        onPress={()=>navigation.goBack()} 
-      >
-      {/* <Image source={{uri:"https://www.dlf.pt/dfpng/middlepng/196-1964608_clip-art-arrow-icon-png-back-arrow-icon.png"}} style={{width:25,height:25,color: "white", fontSize: 20,padding:10 }}/> */}
-      <Text style={{color: "white", fontSize: 20,padding:5 }}>⬅️</Text>
-     
-        {/* <Text style={{ color: "white", fontSize: 20,padding:4 }}>back</Text> */}
-      </TouchableOpacity>
+
     <Image  style={{width:width, height:height}} source={{uri:list}}/>
     <View
         style={{
           position: "absolute",
-          bottom: 20,
-          left: "25%",
+          bottom: "10%",
+          // left: "26%",
           paddingHorizontal: 5,
           paddingVertical: 5,
           backgroundColor: "#f54242",
         //   backgroundColor: color,
-          borderRadius: 10,
-          borderTopEndRadius: 0,
-          borderBottomStartRadius: 0
-        
+          borderRadius: 10,justifyContent: 'center', alignItems: 'center'
+          // borderTopEndRadius: 0,
+          // borderBottomStartRadius: 0
         }}
       > 
        <TouchableOpacity style={{ color: "white", fontSize: 20,padding:4 }} onPress={() => {setModalVisible(true)}}>

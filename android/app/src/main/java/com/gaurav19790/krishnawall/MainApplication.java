@@ -1,4 +1,4 @@
-package com.krishnawall;
+package com.gaurav19790.krishnawall;
 
 import android.app.Application;
 import com.facebook.react.PackageList;

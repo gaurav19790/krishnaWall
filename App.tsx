@@ -39,9 +39,9 @@ const App=()=> {
   return (
     <NavigationContainer>
       <Stack.Navigator  screenOptions={{
-    headerShown: false
-  }}   initialRouteName="Tab">
-        <Stack.Screen name="Tab" component={HomeScreen} />
+    headerShown: true
+  }}   initialRouteName="Home">
+        <Stack.Screen name="Home" component={HomeScreen} />
         <Stack.Screen name="Full" component={FullScreen}  options={({route})=>{return( { title : route.params.item, }) }}/>
       </Stack.Navigator>
     </NavigationContainer>

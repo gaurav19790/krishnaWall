@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import type { PropsWithChildren } from 'react';
+
 import {
     Image,
     SafeAreaView,
@@ -12,10 +13,6 @@ import {
 } from 'react-native';
 
 import * as NewAppScreen from 'react-native/Libraries/NewAppScreen';
-
-type SectionProps = PropsWithChildren<{
-    title: string;
-}>;
 const { width, height } = Dimensions.get('window');
 import firestore from '@react-native-firebase/firestore';
 
@@ -48,7 +45,6 @@ const HomeScreen = ({ navigation }) => {
         // Unsubscribe from events when no longer in use
         return () => subscriber();
     }, []);
-    console.log(users);
     return (
         <View style={[backgroundStyle, { flex: 1, height: 100 }]} >
             <StatusBar

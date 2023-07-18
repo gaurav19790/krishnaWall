@@ -1,4 +1,4 @@
-package com.krishnawall;
+package com.gaurav19790.krishnawall;
 
 import com.facebook.react.ReactActivity;
 import com.facebook.react.ReactActivityDelegate;
